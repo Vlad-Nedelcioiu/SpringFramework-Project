@@ -1,18 +1,21 @@
 package com.example.Project.model;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 public class User {
-    //TODO USER SA FIE UN EMAIL // SA RESPECTE @.....
-    private static int id;
+    private int id;
     private String name;
     private String password;
 
+    public User() {
+    }
     public User(int id, String name, String password) {
         this.id = id;
         this.name = name;
         this.password = password;
     }
 
-    public static int getId() {
+    public int getId() {
         return id;
     }
 

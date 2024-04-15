@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Level HTML Template by Tooplate</title>
+    <title>FlightBooking</title>
     <!--
 
     Tooplate 2095 Level
@@ -43,7 +43,7 @@
                 <nav class="navbar navbar-expand-lg narbar-light">
                     <a class="navbar-brand mr-auto" href="#">
                         <img src="img/logo.png" alt="Site logo">
-                        Level
+                        FlightBooking
                     </a>
                     <button type="button" id="nav-toggle" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#mainNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
@@ -66,21 +66,15 @@
                     <div class="col-xs-12 ml-auto mr-auto ie-container-width-fix">
                             <div class="form-row clearfix pl-2 pr-2 tm-fx-col-xs">
                                 <form th:action="@{/handleForm}" method="post">
-
                                     <ul th:each="flight,idx: ${flights}">
                                         <li>
-<!--                                                <div >-->
-<!--                                                    <input type="checkbox" name ="values" th:value="${flight}">-->
-<!--                                                    <label th:text="${flight.destination}"></label>-->
-<!--                                                </div>-->
-
                                             <div >
-                                                <input type="checkbox" name ="values" th:value="${idx.index}">
+                                                <input type="checkbox" name ="values" th:value="${flightsIds}">
                                                 <label th:text="${flight.destination}"></label>
                                             </div>
-
                                         </li>
                                     </ul>
+                                    <input type="hidden" name="uname" th:value="${user}" />
                                     <div class="form-group tm-form-element tm-form-element-2">
                                         <button type="submit" class="btn btn-primary tm-btn-search">Get flights</button>
                                     </div>
@@ -92,7 +86,7 @@
             </div>
         </div>
     </div>
-
+    <!--
     <div class="tm-section-2">
         <div class="container">
             <div class="row">
@@ -104,6 +98,7 @@
             </div>
         </div>
     </div>
+    -->
 </div>
 
 <!-- load JS files -->

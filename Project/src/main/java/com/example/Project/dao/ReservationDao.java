@@ -1,6 +1,7 @@
 package com.example.Project.dao;
 
 import org.springframework.stereotype.Repository;
+import org.springframework.ui.Model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -26,9 +27,9 @@ public class ReservationDao {
         }
     }
 
-    public void createReservation(int id_user, int id_trip){
+    public void createReservation(String userName, int id_trip){
         try {
-            createReservation.setInt(1,id_user);
+            createReservation.setString(1,userName);
             createReservation.setInt(2,id_trip);
             createReservation.execute();
         } catch (SQLException e) {
@@ -41,7 +42,7 @@ public class ReservationDao {
             showReservationsByIdUser.setInt(1,id_user);
             ResultSet resultSet = showReservationsByIdUser.executeQuery();
             while(resultSet.next()){
-                resultSet.getInt(id_user);
+                resultSet.getInt("id_user");
             }
         } catch (SQLException e) {
             e.printStackTrace();

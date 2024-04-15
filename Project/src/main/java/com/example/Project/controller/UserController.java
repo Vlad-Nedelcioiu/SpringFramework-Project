@@ -2,11 +2,9 @@ package com.example.Project.controller;
 
 import com.example.Project.model.User;
 import com.example.Project.service.UserService;
-import org.springframework.boot.Banner;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.Optional;
@@ -15,7 +13,6 @@ import java.util.Optional;
 public class UserController {
 
     private UserService userService;
-    private User currentUser;
 
     public UserController(UserService userService) {
         this.userService = userService;
@@ -23,13 +20,23 @@ public class UserController {
 
     @GetMapping("/login")
     public String login(@RequestParam(value = "uname", required = false) String uname,
-                              @RequestParam(value = "psw", required = false) String psw, RedirectAttributes redirectAttributes){
+                        @RequestParam(value = "psw", required = false) String psw,
+                        RedirectAttributes redirectAttributes,
+                        HttpSession session){
+
+        System.out.println("Username: " + uname); // debug
+        System.out.println("Password: " + psw); // debug
         boolean userBoolean =  userService.verifyUser(uname, psw);
 
         if(uname!= null && userBoolean){
+            User user = new User();
+            user.setName(uname);
+            session.setAttribute("user", user);
             redirectAttributes.addAttribute("user", uname);
-            return "redirect:index";
+            System.out.println("succes"); // debug
+            return "redirect:/index";
         }
+        System.out.println("fail");
         return "loginPage";
     }
 
@@ -40,7 +47,7 @@ public class UserController {
         if(uname != null && !userService.verifyUser(uname, psw)){
             userService.createUser(uname,psw);
         }
-        return "loginPage";
+        return "register";
     }
 
 }

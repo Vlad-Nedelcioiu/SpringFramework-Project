@@ -1,7 +1,11 @@
 package com.example.Project.service;
 
 import com.example.Project.dao.UserDao;
+import com.example.Project.model.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.security.Principal;
 
 @Service
 public class UserService {
@@ -21,5 +25,6 @@ public class UserService {
     public boolean verifyUser(String name, String password){
         return userDao.verifyUser(name,password);
     }
+    ;
 
 }

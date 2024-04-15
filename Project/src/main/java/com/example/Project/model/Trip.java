@@ -7,14 +7,12 @@ public class Trip {
     private String destination;
     private Date checkIn;
     private Date checkOut;
-    private int numberOfPersons;
 
     public Trip(String destination, Date checkIn, Date checkOut) {
 
         this.destination = destination;
         this.checkIn = checkIn;
         this.checkOut = checkOut;
-        //this.numberOfPersons = numberOfPersons;
     }
 
     public String getDestination() {
@@ -40,15 +38,10 @@ public class Trip {
     public void setCheckOut(Date checkOut) {
         this.checkOut = checkOut;
     }
-    /*
-    public int getNumberOfPersons() {
-        return numberOfPersons;
-    }
 
-    public void setNumberOfPersons(int numberOfPersons) {
-        this.numberOfPersons = numberOfPersons;
+    public int getId() {
+        return id;
     }
-    */
 
     @Override
     public String toString() {
@@ -56,7 +49,6 @@ public class Trip {
                 ", destination='" + destination + '\'' +
                 ", checkIn=" + checkIn +
                 ", checkOut=" + checkOut +
-                //", numberOfPersons=" + numberOfPersons +
                 '}';
     }
 }

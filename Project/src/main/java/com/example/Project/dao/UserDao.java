@@ -1,5 +1,6 @@
 package com.example.Project.dao;
 
+import com.example.Project.model.User;
 import org.springframework.stereotype.Repository;
 
 import java.sql.Connection;
@@ -60,7 +61,7 @@ public class UserDao {
             checkIfUserNameExists.setString(1,name);
             ResultSet resultSet = checkIfUserNameExists.executeQuery();
             while(resultSet.next()){
-                if(resultSet.getString(name).equals(name)){
+                if(resultSet.getString("name").equals(name)){
                     return true;
                 }
             }
@@ -69,4 +70,5 @@ public class UserDao {
         }
         return false;
     }
+
 }
